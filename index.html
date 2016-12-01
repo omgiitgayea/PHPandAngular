@@ -3,10 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        ul {
+            border: 1px solid orange;
+        }
+    </style>
     <script src="public/thirdParty/angular/angular.js"></script>
     <script src="js/app.js"></script>
 </head>
-<body>
-
+<body ng-app="funwithcountries">
+    <h1>Fun with Countries</h1>
+    <div ng-controller="CountryController as countryCtrl">
+        <ul>
+            <li ng-repeat="c in countryCtrl.countries">
+                <img ng-src="images/{{c.code}}.png">
+                {{c.name}}
+                <ul ng-show="c.states.length > 0">
+                    <li ng-repeat="s in c.states">
+                        {{s.name}}
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
 </body>
 </html>
